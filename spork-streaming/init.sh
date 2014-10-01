@@ -18,4 +18,13 @@ export SPARK_HOME=/root/spark
 export HADOOP_HOME=/root/ephemeral-hdfs
 export HADOOP_CONF_DIR=$HADOOP_HOME/conf
 #export SPARK_MASTER="set spark master here"
+sleep 3
+cd
+echo "Downloading Kafka"
+wget https://archive.apache.org/dist/kafka/0.8.0/kafka_2.8.0-0.8.0.tar.gz
+tar -xzf kafka_2.8.0-0.8.0.tar.gz
+echo "Downloading Redis"
+wget http://download.redis.io/releases/redis-2.8.17.tar.gz
+tar -xzf redis-2.8.17.tar.gz
+echo "Done!!"
 
