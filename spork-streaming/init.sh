@@ -1,8 +1,8 @@
 #!/bin/bash
 pushd /root
-wget https://s3.amazonaws.com/sigmoidanalytics-data/spork-streaming.tar.gz
-tar -xzf spork-streaming.tar.gz
-rm spork-streaming.tar.gz
+wget https://s3.amazonaws.com/sigmoidanalytics-data/spork-streaming.tar
+tar -xvf spork-streaming.tar
+rm spork-streaming.tar
 cd spork-streaming
 echo "In spork-streaming"
 yum install ant -y
