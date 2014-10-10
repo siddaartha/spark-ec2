@@ -10,6 +10,7 @@ export SPARK_WORKER_CORES={{spark_worker_cores}}
 export HADOOP_HOME="/root/ephemeral-hdfs"
 export SPARK_MASTER_IP={{active_master}}
 export BROADCAST_MASTER_IP={{active_master}}
+export SPARK_WORKER_DIR="{{spark_local_dirs}}"
 export MASTER=`cat /root/spark-ec2/cluster-url`
 
 export SPARK_SUBMIT_LIBRARY_PATH="$SPARK_SUBMIT_LIBRARY_PATH:/root/ephemeral-hdfs/lib/native/"
