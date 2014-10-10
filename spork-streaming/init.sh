@@ -18,7 +18,9 @@ export SPARK_HOME=/root/spark
 export HADOOP_HOME=/root/ephemeral-hdfs
 export HADOOP_CONF_DIR=$HADOOP_HOME/conf
 #export SPARK_MASTER="set spark master here"
+export SPORK_STREAMING_HOME=/root/spork-streaming
 cd
+export SPORK_STREAMING_HOME=/root/spork-streaming
 echo "Downloading Kafka"
 wget https://archive.apache.org/dist/kafka/0.8.0/kafka_2.8.0-0.8.0.tar.gz
 tar -xzf kafka_2.8.0-0.8.0.tar.gz
