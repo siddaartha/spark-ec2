@@ -9,6 +9,14 @@ source /root/.bash_profile
 # Load the cluster variables set by the deploy script
 source ec2-variables.sh
 
+#Load spark variables into bashrc
+echo "export HADOOP_HOME=/root/ephemeral-hdfs" >> ~/.bashrc
+echo "export SPARK_HOME=/root/spark" >> ~/.bashrc
+Broadcast=`cat /root/spark-ec2/cluster-url`
+echo "export SPORK_STREAMING_HOME=/root/spork-streaming" >> ~/.bashrc
+echo "PATH=$PATH:$SPORK_STREAMING_HOME" >> ~/.bashrc
+echo "export SPARK_MASTER=$BROADCAST" >> ~/.bashrc
+
 # Set hostname based on EC2 private DNS name, so that it is set correctly
 # even if the instance is restarted with a different private DNS name
 PRIVATE_DNS=`wget -q -O - http://instance-data.ec2.internal/latest/meta-data/local-hostname`
@@ -24,6 +32,8 @@ echo "$MASTERS" > masters
 echo "$SLAVES" > slaves
 
 MASTERS=`cat masters`
+echo "export BROADCAST_MASTER_IP=$MASTERS" >> ~/.bashrc
+source ~/.bashrc
 NUM_MASTERS=`cat masters | wc -l`
 OTHER_MASTERS=`cat masters | sed '1d'`
 SLAVES=`cat slaves`
