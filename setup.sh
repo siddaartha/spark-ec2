@@ -13,6 +13,7 @@ source ec2-variables.sh
 echo "export HADOOP_HOME=/root/ephemeral-hdfs" >> ~/.bashrc
 echo "export SPARK_HOME=/root/spark" >> ~/.bashrc
 echo "export SPORK_STREAMING_HOME=/root/spork-streaming" >> ~/.bashrc
+SPORK_STREAMING_HOME=/root/spork-streaming
 echo "PATH=$PATH:$SPORK_STREAMING_HOME" >> ~/.bashrc
 
 # Set hostname based on EC2 private DNS name, so that it is set correctly
