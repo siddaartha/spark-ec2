@@ -24,8 +24,28 @@ export SPORK_STREAMING_HOME=/root/spork-streaming
 echo "Downloading Kafka"
 wget https://archive.apache.org/dist/kafka/0.8.0/kafka_2.8.0-0.8.0.tar.gz
 tar -xzf kafka_2.8.0-0.8.0.tar.gz
+mv kafka_2.8.0-0.8.0 kafka
 echo "Downloading Redis"
 wget http://download.redis.io/releases/redis-2.8.17.tar.gz
 tar -xzf redis-2.8.17.tar.gz
+echo "Setting up Redis"
+mv redis-2.8.17 redis
+cd /root/redis
+make
+cd
+echo "Installing npm"
+wget http://nodejs.org/dist/v0.10.4/node-v0.10.4.tar.gz
+tar -xzf node-v0.10.4.tar.gz
+cd node-v0.10.4
+./configure
+make
+make install
+echo "Installing Redis Commandar"
+npm install -g redis-commander
+echo "Setting up Kafka and zookeeper"
+cd /root/kafka/
+screen -S zookeeper -d -m bin/zookeeper-server-start.sh config/zookeeper.properties
+screen -S kafka -d -m bin/kafka-server-start.sh config/server.properties
+cd
 echo "Done!!"
 
